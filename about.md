@@ -6,4 +6,4 @@ permalink: /about/
 
 ### Contact me
 
-[email@domain.com](mailto:237476161@qq.com)
+[237476161@qq.com](mailto:237476161@qq.com)
