@@ -1,10 +1,43 @@
 ---
-layout: post
-title: You're up and running!
+标题: 并发模式
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+**隔离**：划分数据，使每个数据只能被一个执行单元访问，创建隔离区.
 
-![_config.yml]({{ site.baseurl }}/images/config.png)
+**不变性**：找出不变的数据，即只读的数据并共享。
 
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
+
+###乐观并发控制和悲观并发控制：
+**乐观锁**：关于冲突检测，如：同时获得文件拷贝，可自由编辑，但提交时，会检查冲突，并要求后提交者解决冲突
+
+- 应用：冲突频率少，冲突后果不严重，应选择乐观锁，如：源代码管理系统
+
+**悲观锁**：关于冲突避免：只要一人取出文件（独占），其他人就被排他
+
+- 死锁：原因：人们在得到锁的情况下还希望得到更多的锁
+- 防止：强制人们在开始工作时就获得所有可能需要的锁。
+- 处理死锁方式：
+ - 牺牲者，放弃他的工作和他所加的锁。
+ - 时间限制，超时自动放弃锁。
+
+###事务：
+- ACID
+- 请求事务
+- 延时事务
+- 请求事务
+- 锁升级
+
+###隔离：
+- 可串行化，
+- 可重复读，
+- 读已提交，
+- 读未提交
+
+###竞争
+
+- 线程控制逃逸规则
+  **可以帮助你判断代码中对某些资源的访问是否是线程安全的**
+  - 如果一个资源的创建，使用，销毁都在同一个线程内完成，
+  - 且永远不会脱离该线程的控制，则该资源的使用就是线程安全的。
+
+- 超时和重试机制**为了避免在同一时间出现的竞争，但是当线程很多时，其中两个或多个线程的超时时间一样或者接近的可能性就会很大，因此就算出现竞争而导致超时后，由于超时时间一样，它们又会同时开始重试，导致新一轮的竞争，带来了新的问题**
