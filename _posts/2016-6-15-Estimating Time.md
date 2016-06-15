@@ -1,4 +1,5 @@
-### Estimating Time (It’s Hard!) ###
+
+*15 June 2014*
 
 > One of the most critical tasks a project manager will undertake is estimating budgets. This is critical because task estimation will set the project scope, define the resources that need to be allocated for the project, and impact the proposed project schedule.
 
